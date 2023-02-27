@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Url_LogIn,Url_LogUp } from "../../FireBaseConfig";
 
 
@@ -46,7 +46,7 @@ export const signUpAction = createAsyncThunk(
 
 
 
-const authSlice = createSlice({
+const AuthSlice = createSlice({
   name:"auth",
   initialState:{
     user:null,
@@ -54,10 +54,10 @@ const authSlice = createSlice({
     error:null
   },
   reducers:{
-    setUser(state, action) {
-      state.user = action.payload
-      localStorage.setItem('token', action.payload.idToken)
-    },
+    // setUser(state, action) {
+    //   state.user = action.payload
+    //   localStorage.setItem('token', action.payload.idToken)
+    // },
     removeUser(state) {
       state.user = null
       localStorage.removeItem('token')
@@ -78,6 +78,6 @@ const authSlice = createSlice({
   }
 })
 
-export const { setUser, removeUser } = authSlice.actions
+export const { setUser, removeUser } = AuthSlice.actions
 
-export default authSlice.reducer
+export default AuthSlice.reducer
